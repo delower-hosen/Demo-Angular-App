@@ -1,0 +1,55 @@
+<div fxFlex="100" fxLayout="column" fxLayoutAlign="start center">
+  <div class="mt-40" fxLayout="column" fxLayoutAlign="center center">
+    <span class="font-size-16">Join to DateHub</span>
+    <span class="font-size-24">Create your account</span>
+  </div>
+  <div [ngStyle.gt-sm]="{'width': '350px'}">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" fxLayout="column"
+      class="mat-card mat-elevation-z3 gray-border-1 border-radius-4 mt-24 p-16">
+      <div fxLayout="column">
+        <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput name="Username" formControlName="Username" required>
+          <mat-hint class="error-text" *ngIf="getFormErrors['Username'].touched && getFormErrors['Username'].invalid">
+            <small *ngIf="getFormErrors['Username'].errors?.required">This is required</small>
+            <small *ngIf="getFormErrors['Username'].errors?.minlength">Minimum length 3 or higher</small>
+          </mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput name="Email" formControlName="Email" required>
+          <mat-hint class="error-text" *ngIf="getFormErrors['Email'].touched && getFormErrors['Email'].invalid">
+            <small *ngIf="getFormErrors['Email'].errors?.required">This is required</small>
+            <small *ngIf="getFormErrors['Email'].errors?.email">Invalid email</small>
+            <small *ngIf="getFormErrors['Email'].errors?.minlength">Minimum length 3 or higher</small>
+          </mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="Password" name="Password" formControlName="Password" required>
+          <mat-hint class="error-text" *ngIf="getFormErrors['Password'].touched && getFormErrors['Password'].invalid">
+            <small *ngIf="getFormErrors['Password'].errors?.required">This is required</small>
+          </mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row wrap" fxLayoutAlign="space-between start">
+        <div fxFlex="100">
+          <button class="primary-background-color white-text-color" fxFlex="100" mat-flat-button
+             type="submit" [disabled]="signupForm.invalid">
+            Sign up
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <div class="mat-card mat-elevation-z3 gray-border-1 border-radius-4 mt-16">
+      <div class="font-size-20 p-16" fxLayout="row" fxLayoutAlign="space-around center">
+        <div>
+          <span class="mr-8">Already have an account?</span>
+          <a class="link" [routerLink]="['/signin']" routerLinkActive="router-link-active">Sign in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

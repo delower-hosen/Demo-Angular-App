@@ -1,0 +1,27 @@
+:host .mat-drawer-container {
+  height: 90%;
+}
+
+:host .mat-icon {
+  cursor: pointer;
+}
+
+:host .navText {
+  padding: 12px 56px 12px 56px;
+  font-style: bold;
+  font-size: 18px;
+  font-weight: 400;
+  color: dimgrey;
+}
+
+:host .navText:hover {
+  background-color: #ebe6e6;
+  cursor: pointer;
+}
+
+:host .activeTab {
+  background-color: #d1cdcd;
+  cursor: pointer;
+  color: black;
+}
+/*# sourceMappingURL=app.component.css.map */

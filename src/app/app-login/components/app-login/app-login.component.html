@@ -1,0 +1,46 @@
+<div fxFlex="100" fxLayout="column" fxLayoutAlign="start center">
+  <div class="mt-40">
+    <span class="font-size-24">{{ 'HOME.TITLE' | translate }}</span>
+  </div>
+  <div [ngStyle.gt-sm]="{'width': '350px'}">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" fxLayout="column"
+      class="mat-card mat-elevation-z3 gray-border-1 border-radius-4 mt-24 p-16">
+      <div fxLayout="column">
+        <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput name="Username" formControlName="Username" required>
+          <mat-hint class="error-text" *ngIf="getFormErrors['Username'].touched && getFormErrors['Username'].invalid">
+            <small *ngIf="getFormErrors['Username'].errors?.required">This is required</small>
+            <small *ngIf="getFormErrors['Username'].errors?.minlength">Minimum length 3 or higher</small>
+          </mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" name="Password" formControlName="Password" required>
+          <mat-hint class="error-text" *ngIf="getFormErrors['Password'].touched && getFormErrors['Password'].invalid">
+            <small *ngIf="getFormErrors['Password'].errors?.required">This is required</small>
+          </mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row wrap" fxLayoutAlign="space-between start">
+        <div fxFlex="100">
+          <button class="primary-background-color white-text-color" [disabled]="loginForm.invalid" fxFlex="100" mat-flat-button type="submit">
+            Sign in
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <div class="mat-card mat-elevation-z3 gray-border-1 border-radius-4 mt-16">
+      <div class="font-size-20 p-16" fxLayout="row" fxLayoutAlign="space-around center">
+        <div>
+          <span class="mr-8">New to DateHub?</span>
+          <a class="link" [routerLink]="['/signup']" routerLinkActive="router-link-active">Create an account.</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

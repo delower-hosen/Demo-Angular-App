@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AACI,KADC,CACD,SAAS,CAAC,oBAAoB,GAAG,qBAAqB,CAAC;EACrD,OAAO,EAAE,oBAAoB;CAC9B;;AAHL,AAII,KAJC,CAID,SAAS,CAAC,6BAA6B,CAAC;EACtC,GAAG,EAAE,MAAM;CACZ;;AANL,AAOI,KAPC,CAOD,SAAS;AACP,kCAAkC,AAAA,yBAAyB,AAAA,4BAA4B;AACvF,qBAAqB,CAAC;EACtB,SAAS,EAAE,kBAAkB,CAAC,WAAW;EACzC,KAAK,EAAE,UAAU;CAClB",
+    "sources": [
+        "app-registration.component.scss"
+    ],
+    "names": [],
+    "file": "app-registration.component.css"
+}

@@ -1,0 +1,57 @@
+<mat-toolbar class="secondary-background-color">
+  <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between">
+    <div>
+      <!-- <span class="pl-16 white-text-color font-size-24">DateHub</span> -->
+      <span class="pl-16 white-text-color font-size-24">{{ 'HOME.TITLE' | translate }}</span>
+    </div>
+    <div *ngIf="!loggedIn()" class="white-text-color pr-16" fxLayout="row" fxLayoutGap="16px">
+      <span class="font-size-20 white-border-2 cursor-pointer px-8 border-radius-4" [routerLink]="['/signin']"
+        routerLinkActive="router-link-active">Sign in</span>
+      <span class="font-size-20 white-border-2 cursor-pointer px-8 border-radius-4" [routerLink]="['/signup']"
+        routerLinkActive="router-link-active">Sign up</span>
+    </div>
+    <div *ngIf="loggedIn()" class="pr-0" fxLayout="row">
+      <div class="cursor-pointer" [matMenuTriggerFor]="menu" fxLayout="row" fxLayoutAlign="center center">
+        <ngx-avatar *ngIf="!username" size='35' bgColor="#c8a5e7"
+           name="{{commonDataService.decodeToken?.unique_name}}">
+        </ngx-avatar>
+        <ngx-avatar *ngIf="username" size='35' bgColor="#c8a5e7"
+           name="{{username}}"></ngx-avatar>
+        <span>
+          <mat-icon class="white-text-color mt-8">keyboard_arrow_down</mat-icon>
+        </span>
+      </div>
+      <mat-menu #menu="matMenu">
+        <div class="pl-16 pr-16 mt-8" fxLayout="column" fxLayoutGap="4px">
+          <span class="font-size-12">Signed in as</span>
+          <span *ngIf="username" class="font-size-16 text-bold">{{username}}</span>
+          <span *ngIf="!username" class="font-size-16 text-bold">{{commonDataService.decodeToken?.unique_name}}</span>
+        </div>
+        <button mat-menu-item>Edit profile</button>
+        <button mat-menu-item (click)="logOut()">Log out</button>
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>
+
+<mat-drawer-container autosize>
+  <mat-drawer *ngIf="loggedIn()" mode="side" opened>
+    <div class="navbar" fxLayout="column">
+      <div class="navText" [ngClass]="{'activeTab': (this.selectedTab=='dashboard')}" (click)="selectTab('dashboard')">
+        <span>
+          <a color="primary">Profile</a>
+        </span>
+      </div>
+
+      <div class="navText" [ngClass]="{'activeTab': (selectedTab=='management')}" (click)="selectTab('management')">
+        <span>
+          <a color="primary">News Feed</a>
+        </span>
+      </div>
+
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
