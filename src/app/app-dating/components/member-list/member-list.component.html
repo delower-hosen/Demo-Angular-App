@@ -1,0 +1,26 @@
+<div class="m-24" fxLayout="row wrap" fxLayoutGap="12px">
+  <div fxLayoutGap="10px" fxLayout="row wrap" *ngFor="let member of members">
+    <div class="mat-card p-4" fxLayout="column">
+      <div class="profile-photo" fxLayout="column" fxLayoutAlign="center center">
+        <ngx-avatar [round]="false" size="100" bgColor="rgb(131, 40, 40)"
+         name="{{member.username}}"></ngx-avatar>
+        <div class="list-icon animate" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
+            <mat-icon  class="font-size-20">person</mat-icon>
+            <mat-icon  class="font-size-20">favorite</mat-icon>
+            <mat-icon  class="font-size-20">message</mat-icon>
+        </div>
+      </div>
+      <mat-divider class="mb-4"></mat-divider>
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <div fxLayout="row">
+          <mat-icon class="font-size-16">person</mat-icon>
+          <span class="font-size-16">{{member.username}}, 24</span>
+        </div>
+        <div fxLayout="row">
+          <mat-icon class="font-size-16">room</mat-icon>
+          <span class="font-size-12">dhaka</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

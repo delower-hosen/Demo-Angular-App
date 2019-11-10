@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./app-login/app-login.module').then(m => m.AppLoginModule)
+  },
+  {
+    path: 'dating',
+    loadChildren: () => import('./app-dating/app-dating.module').then(m => m.AppDatingModule)
   }
 ];
 

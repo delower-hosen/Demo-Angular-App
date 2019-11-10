@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-
+import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { CommonDataService } from './../../../shared-services/data-services/common-data.service';
@@ -18,7 +18,8 @@ export class AppLoginComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     private commonDataService: CommonDataService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router: Router
     ) { }
 
   loginForm = this.fb.group({
@@ -33,6 +34,8 @@ export class AppLoginComponent implements OnInit {
     const user: User = this.loginForm.value;
     this.commonDataService.login(user).subscribe( next => {
       this.showMessage('Login succesful');
+      this.router.navigate(['/dating']);
+
     }, error => {
       this.showMessage('Login failed');
     });

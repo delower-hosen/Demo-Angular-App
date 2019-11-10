@@ -5,12 +5,14 @@ import { map } from 'rxjs/operators';
 
 import { User } from './../../Interfaces/User';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { environment } from './../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonDataService {
-  baseUrl = 'http://localhost:53024/api/auth/';
+  // baseUrl = 'http://localhost:53024/api/auth/';
+  baseUrl = environment.apiUrl;
   jwtHelper = new JwtHelperService();
   decodeToken: any;
 
@@ -19,7 +21,7 @@ export class CommonDataService {
   ) { }
 
   public login(model: User) {
-    return this.http.post(this.baseUrl + 'login', model)
+    return this.http.post(this.baseUrl + 'auth/login', model)
       .pipe(
         map((response: any) => {
           const user = response;
@@ -32,13 +34,23 @@ export class CommonDataService {
   }
 
   public register(model: User) {
-    return this.http.post(this.baseUrl + 'register', model)
+    return this.http.post(this.baseUrl + 'auth/register', model)
       .pipe(
         map((response: any) => {
           const user = response;
           if (user) {
             console.log('register succussful!');
           }
+        })
+      );
+  }
+
+  public getMemberList() {
+    return this.http.get(this.baseUrl + 'users')
+      .pipe(
+        map((response: any) => {
+          const users = response;
+          return users;
         })
       );
   }

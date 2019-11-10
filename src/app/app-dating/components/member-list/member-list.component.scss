@@ -1,0 +1,53 @@
+.mat-card {
+  min-width: 110px;
+  min-height: 150px;
+  max-width: 110px;
+  max-height: 150px;
+  border-radius: 5px;
+}
+
+::ng-deep .avatar-container {
+  &:hover {
+    transform: scale(1.2, 1.2);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+    opacity: 0.5;
+    cursor: pointer;
+  }
+}
+.profile-photo {
+  min-height: 100px;
+  max-height: 100px;
+  background-color: rgb(211, 199, 199);
+  overflow: hidden;
+  position: relative;
+}
+.list-icon {
+  position: absolute;
+  bottom: -20px !important;
+  opacity: 0;
+  left: 0;
+  right: 0;
+  margin-right: auto;
+  margin-left: auto;
+}
+.profile-photo:hover .list-icon {
+  bottom: 10px !important;
+  opacity: 1;
+  .mat-icon {
+    color: white;
+    background-color: orangered;
+    padding: 4px 4px 0 4px !important;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}
+.mat-icon {
+  height: 20px !important;
+  width: 15px !important;
+  color: gray;
+}
+
+.animate {
+    transition: all 0.5s ease-out;
+}
