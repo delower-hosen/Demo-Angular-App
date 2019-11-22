@@ -8,7 +8,11 @@ const routes: Routes = [
     loadChildren: () => import('./app-login/app-login.module').then(m => m.AppLoginModule)
   },
   {
-    path: 'dating',
+    path: 'my-profile',
+    loadChildren: () => import('./app-profile/app-profile.module').then(m => m.AppProfileModule)
+  },
+  {
+    path: 'member-list',
     loadChildren: () => import('./app-dating/app-dating.module').then(m => m.AppDatingModule)
   }
 ];

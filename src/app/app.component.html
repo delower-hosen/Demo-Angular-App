@@ -27,7 +27,7 @@
           <span *ngIf="username" class="font-size-16 text-bold">{{username}}</span>
           <span *ngIf="!username" class="font-size-16 text-bold">{{commonDataService.decodeToken?.unique_name}}</span>
         </div>
-        <button mat-menu-item>Edit profile</button>
+        <button mat-menu-item [routerLink]="['/my-profile']" routerLinkActive="router-link-active" >Edit profile</button>
         <button mat-menu-item (click)="logOut()">Log out</button>
       </mat-menu>
     </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonDataService } from './../../../shared-services/data-services/common-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-member-list',
@@ -9,7 +10,8 @@ import { CommonDataService } from './../../../shared-services/data-services/comm
 export class MemberListComponent implements OnInit {
   members = [];
   constructor(
-    private commonDataService: CommonDataService
+    private commonDataService: CommonDataService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -21,6 +23,11 @@ export class MemberListComponent implements OnInit {
       debugger;
       this.members = response;
     });
+  }
+
+  public onClickPerson(itemId: string) {
+    this.router.navigate(['member-list/', itemId]);
+    console.log(itemId);
   }
 
 }

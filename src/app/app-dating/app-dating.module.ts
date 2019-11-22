@@ -9,10 +9,11 @@ import { AvatarModule } from 'ngx-avatar';
 
 import { AppDatingRoutingModule } from './app-dating-routing.module';
 import { MemberListComponent } from './components/member-list/member-list.component';
+import { MemberDetailsComponent } from './components/member-details/member-details.component';
 
 
 @NgModule({
-  declarations: [MemberListComponent],
+  declarations: [MemberListComponent, MemberDetailsComponent],
   imports: [
     CommonModule,
     AppDatingRoutingModule,

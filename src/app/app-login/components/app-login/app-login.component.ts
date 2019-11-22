@@ -34,7 +34,7 @@ export class AppLoginComponent implements OnInit {
     const user: User = this.loginForm.value;
     this.commonDataService.login(user).subscribe( next => {
       this.showMessage('Login succesful');
-      this.router.navigate(['/dating']);
+      this.router.navigate(['/member-list']);
 
     }, error => {
       this.showMessage('Login failed');

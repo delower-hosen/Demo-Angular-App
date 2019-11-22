@@ -1,0 +1,50 @@
+<div class="m-40" fxLayout="column" fxLayoutGap="16px">
+  <div fxFlex="100" fxLayout="row" fxLayoutGap="20px">
+    <span class="font-size-24" fxFlex="20">Your Profile</span>
+    <div  class="alert-message font-size-16" fxLayout="row" fxLayoutAlign="start center">
+      <mat-icon>info</mat-icon>
+      <span> <strong> Informaion: </strong> You have made changes. Any unsaved changes will be lost!</span>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutGap="20px">
+    <div class="mat-card" fxFlex="20" fxLayout="column" fxLayoutGap="20px">
+      <div class="profile-photo pt-32" fxLayout="column" fxLayoutAlign="center center">
+        <ngx-avatar [round]="false" size="150" bgColor="rgb(131, 40, 40)" name="{{userInfo.Username}}">
+        </ngx-avatar>
+      </div>
+      <div class="general-info p-32" fxLayout="column" fxLayoutGap="12px">
+        <div>
+          <span class="font-size-16 text-bold">Location:</span><br>
+          <span class="font-size-12">{{userInfo.City}}, {{userInfo.Country}}</span>
+        </div>
+        <div>
+          <span class="font-size-16 text-bold">Age:</span><br>
+          <span class="font-size-12">24</span>
+        </div>
+        <div>
+          <span class="font-size-16 text-bold">Last Active:</span><br>
+          <span class="font-size-12">{{userInfo.LastActive | date: 'fullDate'}}</span>
+        </div>
+        <div>
+          <span class="font-size-16 text-bold">Member since:</span><br>
+          <span class="font-size-12">{{userInfo.Created | date}}</span>
+        </div>
+        <div fxFlex="100">
+          <button class="primary-background-color white-text-color" fxFlex="100" mat-flat-button type="submit">
+            Save Changes
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="mat-card" fxFlex="80">
+      <mat-tab-group>
+        <mat-tab label="Edit Profile">
+          <app-edit-profile></app-edit-profile>
+        </mat-tab>
+        <mat-tab label="Edit Photos">
+          <app-edit-photos></app-edit-photos>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

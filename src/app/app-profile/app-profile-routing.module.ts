@@ -1,0 +1,17 @@
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { MyProfileComponent } from './../app-profile/components/my-profile/my-profile.component';
+
+
+const routes: Routes = [
+  {
+    path: '',
+    component: MyProfileComponent
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class AppProfileRoutingModule { }

@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from './../../../Interfaces/User';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { GuidGeneratorService } from './../../../shared-services/helper-services/guid-generator.service';
 
 @Component({
   selector: 'app-app-registration',
@@ -18,7 +19,8 @@ export class AppRegistrationComponent implements OnInit {
      private http: HttpClient,
      private commonDataService: CommonDataService,
      private snackBar: MatSnackBar,
-     private router: Router
+     private router: Router,
+     private guidGeneratorService: GuidGeneratorService
      ) { }
 
   signupForm = this.fb.group({
@@ -31,9 +33,9 @@ export class AppRegistrationComponent implements OnInit {
   }
 
   onSubmit() {
-    debugger;
-    const user: User = this.signupForm.value;
-    this.commonDataService.register(user).subscribe(response => {
+    const userModel = this.signupForm.value;
+    userModel.Id = this.guidGeneratorService.getGuid();
+    this.commonDataService.register(userModel).subscribe(response => {
       this.showMessage('Registration successfull');
       this.signupForm.reset();
       this.router.navigate(['/signin']);

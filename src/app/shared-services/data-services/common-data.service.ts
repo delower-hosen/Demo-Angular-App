@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { User } from './../../Interfaces/User';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from './../../../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -53,5 +54,26 @@ export class CommonDataService {
           return users;
         })
       );
+  }
+
+  public getMember(userId: string) {
+    return this.http.get(this.baseUrl + 'users/' + userId)
+    .pipe(
+      map((response: any) => {
+        const userInfo = response;
+        return userInfo;
+      })
+    );
+  }
+
+  public getPhotoConnection(itemId: string) {
+    const url = this.baseUrl + 'connections/' + `${itemId}`;
+    return this.http.get(url)
+    .pipe(
+      map((response: any) => {
+        const userInfo = response;
+        return userInfo;
+      })
+    );
   }
 }
