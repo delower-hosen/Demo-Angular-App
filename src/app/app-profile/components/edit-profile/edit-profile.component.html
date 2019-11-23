@@ -1,43 +1,48 @@
 <div class="edit-profile m-20">
   <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
     <div fxFlex="100" fxLayout="column" fxLayoutGap="0px">
-      <div fxFlex="100" fxLayout="column">
-        <span>Description</span>
+      <div *ngIf="userInfo && userInfo.Introduction" fxFlex="100" fxLayout="column">
+        <span>Bio</span>
         <mat-form-field fxFlex="100" appearance="outline">
           <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"
-            cdkAutosizeMaxRows="5"></textarea>
+            cdkAutosizeMaxRows="5" [(ngModel)]="userInfo.Introduction" formControlName="Introduction"></textarea>
         </mat-form-field>
       </div>
-      <div fxFlex="100" fxLayout="column">
+      <div *ngIf="userInfo && userInfo.LookingFor" fxFlex="100" fxLayout="column">
         <span>Looking For</span>
         <mat-form-field fxFlex="100" appearance="outline">
           <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"
-            cdkAutosizeMaxRows="5"></textarea>
+            cdkAutosizeMaxRows="5" [(ngModel)]="userInfo.LookingFor" formControlName="LookingFor"></textarea>
         </mat-form-field>
       </div>
-      <div fxFlex="100" fxLayout="column">
+      <div *ngIf="userInfo && userInfo.Interests" fxFlex="100" fxLayout="column">
         <span>Interests</span>
         <mat-form-field fxFlex="100" appearance="outline">
           <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"
-            cdkAutosizeMaxRows="5"></textarea>
+            cdkAutosizeMaxRows="5" [(ngModel)]="userInfo.Interests" formControlName="Interests"></textarea>
         </mat-form-field>
       </div>
-      <div fxFlex="100" fxLayout="column">
+      <div *ngIf="userInfo && userInfo.City && userInfo.Country" fxFlex="100" fxLayout="column">
         <span>Location Details:</span>
         <div>
           <div fxFlex="50" fxLayout="row">
             <span class="font-size-16 pt-16 pr-12">City:</span>
             <mat-form-field fxFlex="80" appearance="outline">
-              <input matInput>
+              <input matInput name="City" ngModel [(ngModel)]="userInfo.City" formControlName="City">
             </mat-form-field>
           </div>
           <div fxFlex="50" fxLayout="row">
             <span class="font-size-16 pt-16 pr-12">Country:</span>
             <mat-form-field fxFlex="80" appearance="outline">
-              <input matInput>
+              <input matInput [(ngModel)]="userInfo.Country" formControlName="Country">
             </mat-form-field>
           </div>
         </div>
+      </div>
+      <div fxFlex="100">
+        <button class="primary-background-color white-text-color" fxFlex="100" mat-flat-button type="submit">
+          Save Changes
+        </button>
       </div>
 
     </div>

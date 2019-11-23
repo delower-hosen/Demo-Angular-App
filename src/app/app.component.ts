@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   selectedTab: string;
   username: string;
+  myUserId: string;
+  userInfo: any;
 
   constructor(
     private authService: AuthService,
@@ -45,6 +47,14 @@ export class AppComponent implements OnInit {
     if (!!token) {
       const decodedToken = this.commonDataService.jwtHelper.decodeToken(token);
       this.username = decodedToken.unique_name;
+      this.myUserId = decodedToken.nameid;
+      this.getUserInfo();
     }
+  }
+  getUserInfo() {
+    this.commonDataService.getMember(this.myUserId).subscribe(response => {
+      this.userInfo = response;
+      console.log(this.userInfo);
+    });
   }
 }

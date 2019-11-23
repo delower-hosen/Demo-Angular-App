@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { AvatarModule } from 'ngx-avatar';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
@@ -29,7 +30,8 @@ import { EditPhotosComponent } from './components/edit-photos/edit-photos.compon
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class AppProfileModule { }

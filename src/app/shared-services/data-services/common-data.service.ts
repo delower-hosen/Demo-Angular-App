@@ -76,4 +76,26 @@ export class CommonDataService {
       })
     );
   }
+
+  public getPhotos(itemId: string) {
+    const url = this.baseUrl + 'photos/' + `${itemId}`;
+    return this.http.get(url)
+    .pipe(
+      map((response: any) => {
+        const photoInfo = response;
+        return photoInfo;
+      })
+    );
+  }
+
+  public updateUser(userInfo: any, itemId: string) {
+    const url = this.baseUrl + 'users/' + `${itemId}`;
+    return this.http.put(url, userInfo)
+    .pipe(
+      map((response: any) => {
+        const photoInfo = response;
+        return photoInfo;
+      })
+    );
+  }
 }

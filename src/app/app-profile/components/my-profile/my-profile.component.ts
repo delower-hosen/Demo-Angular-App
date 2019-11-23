@@ -18,7 +18,7 @@ export class MyProfileComponent implements OnInit {
     this.getUserId();
     this.getUserInfo();
   }
- 
+
   private getUserId() {
     const token = localStorage.getItem('token');
     if (!!token) {

@@ -1,1 +1,14 @@
-<p>edit-photos works!</p>
+<div class="m-24" fxLayout="row wrap" fxLayoutGap="12px">
+  <div fxLayoutGap="10px" fxLayout="column" *ngFor="let photo of photos">
+    <div class="mat-card p-4" fxLayout="column">
+      <div class="profile-photo" fxLayout="column" fxLayoutAlign="center center">
+        <ngx-avatar [round]="false" size="150" bgColor="rgb(131, 40, 40)" src="{{photo.Url}}" name="{{photo.Username}}">
+        </ngx-avatar>
+        <div class="list-icon animate" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
+          <span class="font-size-12 main-button">Make main</span>
+          <mat-icon class="font-size-20">delete</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,6 +8,8 @@ import { CommonDataService } from './../../../shared-services/data-services/comm
 })
 export class EditPhotosComponent implements OnInit {
   myUserId: string;
+  photoIds: string[] = [];
+  photos: any;
 
   constructor(
     public commonDataService: CommonDataService
@@ -26,9 +28,19 @@ export class EditPhotosComponent implements OnInit {
   }
 
   private getMemberDetails() {
-    debugger;
     this.commonDataService.getPhotoConnection(this.myUserId).subscribe(response => {
-      console.log(response);
+      for (const elem of response) {
+        this.photoIds.push(elem.ChildEntityId);
+      }
+      if (this.photoIds && this.photoIds.length > 0) {
+        this.getPhotos();
+      }
+    });
+  }
+
+  private getPhotos() {
+    this.commonDataService.getPhotos(this.photoIds[0]).subscribe(response => {
+      this.photos = response;
     });
   }
 
