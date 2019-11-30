@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-// @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "~font-awesome/css/font-awesome.css";
+
 html,
 body {
   height: 100%;
@@ -467,4 +469,8 @@ body {
 .snack-bar-color {
   // background-color: rgb(238, 77, 131);
   color: palevioletred;
+}
+
+.mat-sidenav-container, .mat-sidenav-content, .mat-tab-body-content {
+  transform: none !important;
 }

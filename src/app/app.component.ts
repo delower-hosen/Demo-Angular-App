@@ -39,8 +39,13 @@ export class AppComponent implements OnInit {
     return this.authService.loggedIn();
   }
   logOut() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/signin']);
+    const userInfo = {
+      LastActive: new Date()
+    };
+    this.commonDataService.updateUser(userInfo, this.myUserId).subscribe(response => {
+      localStorage.removeItem('token');
+      this.router.navigate(['/signin']);
+    });
   }
   displayName() {
     const token = localStorage.getItem('token');

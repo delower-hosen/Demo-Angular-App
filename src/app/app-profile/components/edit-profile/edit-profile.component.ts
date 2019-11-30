@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CommonDataService } from './../../../shared-services/data-services/common-data.service';
 
@@ -9,6 +9,7 @@ import { CommonDataService } from './../../../shared-services/data-services/comm
 })
 export class EditProfileComponent implements OnInit {
   @Input() userInfo: any;
+  @Output() changeUserInfo: EventEmitter<any> = new EventEmitter();
   constructor(
     private fb: FormBuilder,
     private commonDataService: CommonDataService
@@ -27,7 +28,9 @@ export class EditProfileComponent implements OnInit {
 
   onSubmit() {
     this.commonDataService.updateUser(this.userInfo, this.userInfo.Id).subscribe(response => {
-      console.log(response);
+      if (response) {
+        this.changeUserInfo.emit(response);
+      }
     });
   }
 

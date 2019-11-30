@@ -12,11 +12,9 @@
     </div>
     <div *ngIf="loggedIn()" class="pr-0" fxLayout="row">
       <div class="cursor-pointer" [matMenuTriggerFor]="menu" fxLayout="row" fxLayoutAlign="center center">
-        <ngx-avatar *ngIf="!username" size='35' bgColor="#c8a5e7"
-           name="{{commonDataService.decodeToken?.unique_name}}">
+        <ngx-avatar *ngIf="!username" size='35' bgColor="#c8a5e7" name="{{commonDataService.decodeToken?.unique_name}}">
         </ngx-avatar>
-        <ngx-avatar *ngIf="username" size='35' bgColor="#c8a5e7"
-           name="{{username}}"></ngx-avatar>
+        <ngx-avatar *ngIf="username" size='35' bgColor="#c8a5e7" name="{{username}}"></ngx-avatar>
         <span>
           <mat-icon class="white-text-color mt-8">keyboard_arrow_down</mat-icon>
         </span>
@@ -27,7 +25,7 @@
           <span *ngIf="username" class="font-size-16 text-bold">{{username}}</span>
           <span *ngIf="!username" class="font-size-16 text-bold">{{commonDataService.decodeToken?.unique_name}}</span>
         </div>
-        <button mat-menu-item [routerLink]="['/my-profile']" routerLinkActive="router-link-active" >Edit profile</button>
+        <button mat-menu-item [routerLink]="['/my-profile']" routerLinkActive="router-link-active">Edit profile</button>
         <button mat-menu-item (click)="logOut()">Log out</button>
       </mat-menu>
     </div>
@@ -37,15 +35,15 @@
 <mat-drawer-container autosize>
   <mat-drawer *ngIf="loggedIn()" mode="side" opened>
     <div class="navbar" fxLayout="column">
-      <div class="navText" [ngClass]="{'activeTab': (this.selectedTab=='dashboard')}" (click)="selectTab('dashboard')">
+      <div class="navText" [ngClass]="{'activeTab': (this.selectedTab=='dashboard')}" [routerLink]="['/my-profile']" routerLinkActive="router-link-active"  (click)="selectTab('dashboard')">
         <span>
-          <a color="primary">Profile</a>
+          <a color="primary">My Profile</a>
         </span>
       </div>
 
-      <div class="navText" [ngClass]="{'activeTab': (selectedTab=='management')}" (click)="selectTab('management')">
+      <div class="navText" [ngClass]="{'activeTab': (selectedTab=='management')}" [routerLink]="['/member-list']" routerLinkActive="router-link-active"  (click)="selectTab('management')">
         <span>
-          <a color="primary">News Feed</a>
+          <a color="primary">Member List</a>
         </span>
       </div>
 

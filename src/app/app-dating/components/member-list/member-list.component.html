@@ -2,8 +2,14 @@
   <div fxLayoutGap="10px" fxLayout="row wrap" *ngFor="let member of members">
     <div class="mat-card p-4" fxLayout="column">
       <div class="profile-photo" fxLayout="column" fxLayoutAlign="center center">
-        <ngx-avatar [round]="false" size="100" bgColor="rgb(131, 40, 40)"
-         name="{{member.Username}}"></ngx-avatar>
+        <div class="photo" *ngIf="member.ProfilePhoto">
+          <img src="{{member.ProfilePhoto}}" alt="Pofile Pic">
+        </div>
+        <div *ngIf="!member.ProfilePhoto">
+
+          <ngx-avatar [round]="false" size="100" bgColor="rgb(131, 40, 40)"
+           name="{{member.Username}}"></ngx-avatar>
+        </div>
         <div class="list-icon animate" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
             <mat-icon  class="font-size-20" (click)="onClickPerson(member.Id)">person</mat-icon>
             <mat-icon  class="font-size-20">favorite</mat-icon>

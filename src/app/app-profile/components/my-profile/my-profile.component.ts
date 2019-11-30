@@ -34,4 +34,13 @@ export class MyProfileComponent implements OnInit {
     });
   }
 
+  getUpdatedUserPhoto(updatdUser: any) {
+    this.userInfo.ProfilePhoto = updatdUser.ProfilePhoto;
+  }
+
+  getUpdatedUser( updatdUser: any ) {
+    this.userInfo.City = updatdUser.City;
+    this.userInfo.Country = updatdUser.Country;
+  }
+
 }

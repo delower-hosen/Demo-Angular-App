@@ -1,1 +1,72 @@
-<p>member-details works!</p>
+<div class="m-40" fxLayout="column" fxLayoutGap="16px">
+  <div *ngIf="userInfo && userInfo.FirstName" fxFlex="100" fxLayout="row" fxLayoutGap="20px">
+    <span class="font-size-24" fxFlex="20">{{userInfo.FirstName}}'s Profile</span>
+  </div>
+  <div fxLayout="row" fxLayoutGap="20px">
+    <div class="mat-card" fxFlex="20" fxLayout="column" fxLayoutGap="10px">
+      <div class="profile-photo pt-32" fxLayout="column" fxLayoutAlign="center center">
+        <div *ngIf="photos && photos[0]">
+          <img src="{{photos[0].Url}}" alt="profile photo">
+        </div>
+        <div *ngIf="photos && !photos[0] && userInfo.FirstName">
+          <ngx-avatar [round]="false" size="150" bgColor="rgb(131, 40, 40)" name="{{userInfo.FirstName}}">
+          </ngx-avatar>
+        </div>
+      </div>
+      <div *ngIf="userInfo && userInfo.FirstName && userInfo.LastName" class="pl-32">
+        <span class="text-bold">{{userInfo.FirstName}} {{userInfo.LastName}}</span>
+      </div>
+      <div class="general-info p-32" fxLayout="column" fxLayoutGap="12px">
+        <div *ngIf="userInfo && userInfo.City && userInfo.Country">
+          <span class="font-size-16 text-bold">Location:</span><br>
+          <span class="font-size-12">{{userInfo.City}}, {{userInfo.Country}}</span>
+        </div>
+        <div>
+          <span class="font-size-16 text-bold">Age:</span><br>
+          <span class="font-size-12">24</span>
+        </div>
+        <div *ngIf="userInfo && userInfo.LastActive">
+          <span class="font-size-16 text-bold">Last Active:</span><br>
+          <span class="font-size-12">{{userInfo.LastActive | timeAgo}}</span>
+        </div>
+        <div *ngIf="userInfo && userInfo.Created">
+          <span class="font-size-16 text-bold">Member since:</span><br>
+          <span class="font-size-12">{{userInfo.Created | date}}</span>
+        </div>
+        <div fxFlex="100" fxLayoutGap="2px">
+          <button fxFlex="50" class="secondary-background-color white-text-color font-size-12" mat-flat-button
+            type="submit">
+            Like
+          </button>
+          <button fxFlex="50" class="primary-background-color white-text-color font-size-12" mat-flat-button
+            type="submit">
+            Message
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="mat-card" fxFlex="80">
+      <mat-tab-group>
+        <mat-tab *ngIf="userInfo && userInfo.FirstName" label="About {{userInfo.FirstName}}">
+          <h4>Introduction</h4>
+          <span *ngIf="userInfo && userInfo.Introduction">{{userInfo.Introduction}}</span>
+          <h4>Looking For</h4>
+          <span *ngIf="userInfo && userInfo.LookingFor">{{userInfo.LookingFor}}</span>
+        </mat-tab>
+        <mat-tab label="Interests">
+          <div>
+            <mat-card class="mat-elevation-z9">
+              <h4>Interests</h4>
+              <span *ngIf="userInfo && userInfo.Interests">{{userInfo.Interests}}</span>
+            </mat-card>
+          </div>
+        </mat-tab>
+        <mat-tab label="Photos">
+          <app-member-photos></app-member-photos>
+        </mat-tab>
+        <mat-tab label="Message">
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

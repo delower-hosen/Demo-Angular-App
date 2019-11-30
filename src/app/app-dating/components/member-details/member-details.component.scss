@@ -1,0 +1,28 @@
+:host {
+    .mat-card {
+      border-radius: 4px !important;
+    }
+    .profile-photo {
+      border-radius: 5px !important;
+      ngx-avatar {
+        border: 1px solid orangered;
+        padding: 2px !important;
+        border-radius: 4px !important;
+      }
+      img {
+        height: 150px !important;
+        width: 150px !important;
+        border-radius: 4px;
+      }
+    }
+    .alert-message {
+      padding: 0px 12px 0px 12px !important;
+      background-color: lightgreen;
+      border-radius: 4px !important;
+      .mat-icon {
+          color: rgb(240, 23, 23);
+          padding-right: 4px;
+      }
+    }
+  }
+  

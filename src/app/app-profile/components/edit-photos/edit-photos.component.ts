@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommonDataService } from './../../../shared-services/data-services/common-data.service';
 
 @Component({
@@ -10,6 +10,8 @@ export class EditPhotosComponent implements OnInit {
   myUserId: string;
   photoIds: string[] = [];
   photos: any;
+
+  @Output() changeProfilePhoto: EventEmitter<any> = new EventEmitter();
 
   constructor(
     public commonDataService: CommonDataService
@@ -41,6 +43,15 @@ export class EditPhotosComponent implements OnInit {
   private getPhotos() {
     this.commonDataService.getPhotos(this.photoIds[0]).subscribe(response => {
       this.photos = response;
+    });
+  }
+
+  makeMain(url: string) {
+    const userInfo = {
+      ProfilePhoto: url
+    };
+    this.commonDataService.updateUser(userInfo, this.myUserId).subscribe(response => {
+      this.changeProfilePhoto.emit(response);
     });
   }
 
